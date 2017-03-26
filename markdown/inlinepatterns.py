@@ -94,6 +94,7 @@ def build_inlinepatterns(md, **kwargs):
     inlinePatterns.register(DoubleTagInlineProcessor(EM_STRONG_RE, 'strong,em'), 'em_strong', 60)
     inlinePatterns.register(DoubleTagInlineProcessor(STRONG_EM_RE, 'em,strong'), 'strong_em', 50)
     inlinePatterns.register(SimpleTagInlineProcessor(STRONG_RE, 'strong'), 'strong', 40)
+    inlinePatterns.register(SimpleTagInlineProcessor(STRIKE_RE, 'del'), 'strike', 40)
     inlinePatterns.register(SimpleTagInlineProcessor(EMPHASIS_RE, 'em'), 'emphasis', 30)
     inlinePatterns.register(SimpleTagInlineProcessor(SMART_STRONG_RE, 'strong'), 'strong2', 20)
     inlinePatterns.register(SimpleTagInlineProcessor(SMART_EMPHASIS_RE, 'em'), 'emphasis2', 10)
@@ -130,6 +131,9 @@ EM_STRONG_RE = r'(\*|_)\1{2}(.+?)\1(.*?)\1{2}'
 
 # ***strong**em*
 STRONG_EM_RE = r'(\*|_)\1{2}(.+?)\1{2}(.*?)\1'
+
+# ~~strikethrough~~
+STRIKE_RE = r'(\~{2})(.+?)\2'
 
 # [text](url) or [text](<url>) or [text](url "title")
 LINK_RE = NOIMG + r'\['
